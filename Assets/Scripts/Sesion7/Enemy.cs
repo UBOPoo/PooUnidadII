@@ -11,12 +11,18 @@ public class Enemy : Character
         characterData.Speed = Random.Range(7f, 15f);
         
     }
-    // Start is called before the first frame update
-    void Start()
+
+    public override void InitializeTurn()
     {
-        
+        base.InitializeTurn();
+        DoEnemyBehaviour();
     }
-   
+
+    public void DoEnemyBehaviour()
+    {
+        FinishTurn();
+    }
+
 
 
 }

@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public GameObject EnemyPrefab;
 
     public List<GameObject> turnList = new List<GameObject>();
+    public int currentTurn=0;
+    public int round = 0;
 
     private void Awake()
     {
@@ -35,18 +37,52 @@ public class GameManager : MonoBehaviour
     }
     public void SortList()
     {
-        //
+
+        /*
+       for (int i = 0; i < turnList.Count; i++)
+       {
+           Debug.Log(turnList[i].GetComponent<Character>().GetSpeed() );
+       }*/
+
         for (int i = 0; i < turnList.Count; i++)
         {
-            Debug.Log(turnList[i].GetComponent<Character>().GetSpeed() );
+            for (int j = 0; j < turnList.Count-1; j++)
+            {
+                if(turnList[j].GetComponent<Character>().GetSpeed()< turnList[j+1].GetComponent<Character>().GetSpeed())
+                {
+                    GameObject tmpGameObj = turnList[j + 1];
+                    turnList[j + 1] = turnList[j];
+                    turnList[j] = tmpGameObj;
+                }
+            }
         }
 
-    }
-    // Start is called before the first frame update
+        
+    } 
+
     void Start()
     {
         GenerateCombat();
+
+        SetCharacterTurn();
     }
 
+    void SetCharacterTurn()
+    {
+        turnList[currentTurn].GetComponent<Character>().InitializeTurn();
+    }
+    public void ChangeNextTurn()
+    {
+        currentTurn++;
+
+        if (currentTurn >= turnList.Count)
+        {
+            currentTurn = 0;
+            round++;
+        }
+           
+
+        SetCharacterTurn();
+    }
      
 }

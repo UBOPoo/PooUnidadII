@@ -17,4 +17,16 @@ public class Character : MonoBehaviour
     {
         return characterData.Speed;
     }
+
+    public virtual  void InitializeTurn()
+    {
+        Debug.Log(" i Have begun my turn " + gameObject.name + " with speed "+ characterData.Speed);
+        
+
+    }
+
+    public virtual void FinishTurn()
+    {
+        GameManager.Instance.ChangeNextTurn();
+    }
 }
