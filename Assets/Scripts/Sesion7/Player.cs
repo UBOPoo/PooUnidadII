@@ -19,9 +19,9 @@ public class Player : Character
 
     }
 
-    void Attack()
+    public override void Attack()
     {
-        Debug.Log("Player attack in turn" + GameManager.Instance.round);
+        Debug.Log("Player attack in turn" + GameManager.Instance.currentTurn);
         FinishTurn();
     }
     public override void FinishTurn()

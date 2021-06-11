@@ -236,9 +236,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 1
+  Party:
+  - {fileID: 1205330422}
   EnemyPrefab: {fileID: 4367863219581499348, guid: ddedf3b9432e7b14f85f009912dd0655, type: 3}
   turnList:
   - {fileID: 1205330421}
+  currentTurn: 0
+  round: 0
 --- !u!4 &1164255746
 Transform:
   m_ObjectHideFlags: 0
@@ -284,6 +288,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterData:
     Speed: 10
+    hp: 100
+    maxHp: 100
+    damage: 10
+  isMyTurn: 0
 --- !u!4 &1205330423
 Transform:
   m_ObjectHideFlags: 0

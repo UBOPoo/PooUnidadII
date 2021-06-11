@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     //*Game state**//
     public EGameState gameState;
 
+
+    public List<Player> Party = new List<Player>();
     //Combat
     public GameObject EnemyPrefab;
 

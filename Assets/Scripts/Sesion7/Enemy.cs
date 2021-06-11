@@ -8,10 +8,14 @@ public class Enemy : Character
      
     private void Awake()
     {
-        characterData.Speed = Random.Range(7f, 15f);
+        
+        characterData = new FCharacterData(Random.Range(75, 12f), Random.Range(7f, 15f), Random.Range(8f, 12f));
+
+    }
+    public override void Attack()
+    {
         
     }
-
     public override void InitializeTurn()
     {
         base.InitializeTurn();

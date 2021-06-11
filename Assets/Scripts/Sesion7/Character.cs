@@ -25,6 +25,15 @@ public class Character : MonoBehaviour
 
     }
 
+    public virtual void Attack()
+    {
+
+    }
+
+    public virtual void ApplyDamage(float DamageReceived)
+    {
+
+    }
     public virtual void FinishTurn()
     {
         GameManager.Instance.ChangeNextTurn();
