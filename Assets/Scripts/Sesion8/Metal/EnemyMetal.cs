@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.AI;
 public class EnemyMetal : MonoBehaviour
 {
+    public delegate void FNotifyPlayerFound(Vector3 PlayerPosition);
+    public static event FNotifyPlayerFound OnPlayerFound;
+
     NavMeshAgent agent;
     public float maxDistance = 10f;
 
@@ -18,9 +21,24 @@ public class EnemyMetal : MonoBehaviour
         InvokeRepeating("FindRandomPath", 0, 3);
     }
 
+    private void OnDisable()
+    {
+        EnemyMetal.OnPlayerFound -= EnemyMetal_OnPlayerFound;
+    }
+    private void OnEnable()
+    {
+        EnemyMetal.OnPlayerFound += EnemyMetal_OnPlayerFound;
+    }
+
+    private void EnemyMetal_OnPlayerFound(Vector3 PlayerPosition)
+    {
+        CancelInvoke();
+        agent.SetDestination(PlayerPosition);
+    }
+
     public void PlayerDetected(Transform Player)
     {
-      
+        OnPlayerFound?.Invoke(Player.position);
     }
     void FindRandomPath()
     {
