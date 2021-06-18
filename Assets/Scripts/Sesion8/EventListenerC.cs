@@ -30,7 +30,7 @@ public class EventListenerC : MonoBehaviour
         }
     }
 
-    private void EventTriggerC_OnGameBegin()
+    public void EventTriggerC_OnGameBegin()
     {
         Debug.Log("Im ready from C" + gameObject.name);
 

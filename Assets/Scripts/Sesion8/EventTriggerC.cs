@@ -14,7 +14,10 @@ public class EventTriggerC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        OnGameBegin.Invoke();
+       // if(OnGameBegin!=null)
+             OnGameBegin?.Invoke();
+         
+
 
     }
 
@@ -22,7 +25,7 @@ public class EventTriggerC : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            OnNameCalled.Invoke("Ignacio");
+            OnNameCalled?.Invoke("Ignacio");
         }
     }
 
